@@ -10,7 +10,6 @@ class Measurement(models.Model):
     order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='measurements')
     values = models.JSONField()
     created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='created_measurements')
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
