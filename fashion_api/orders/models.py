@@ -1,5 +1,6 @@
 from django.db import models
 from customers.models import Customer
+from  users.models import User
 
 # Create your models here.
 class Order(models.Model):
@@ -15,7 +16,7 @@ class Order(models.Model):
     status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='ongoing')
     delivery_date = models.DateField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-    created_by = models.CharField(max_length=100)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='created_orders')
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
