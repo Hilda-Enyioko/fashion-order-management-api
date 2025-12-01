@@ -63,10 +63,10 @@ This project aims to streamline these processes through a structured API.
 | Model       | Fields                                                                                       | Description                                                                                                   |
 |-------------|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
 | Customer    | customer_id, name, email, phone, created_at                                                   | Stores customer information                                                                                   |
-| Order       | order_id, customer, status, price, payment_status, delivery_date, created_at, created_by      | Stores each order                                                                                             |
-| Measurement | measurement_id, customer, order, type, values                                                 | Stores measurements for an order                                                                              |
+| Order       | order_id, customer, status, price, payment_status, delivery_date, created_at, updated_at, created_by      | Stores each order                                                                                             |
+| Measurement | measurement_id, customer, order, type, values, created_at, created_by, updated_at                                                | Stores measurements for an order                                                                              |
 | StyleImage  | image_id, order, image_url, description                                                       | Stores style images for an order                                                                              |
-| User        | user_id, username, email, role (Lead, Junior), is_active, date_created                        | For authentication and role management: Lead designers have full access; junior designers have restricted access to measurements and images only |
+| User        | user_id, username, email, first_name, last_name, role (admin, junior_admin), is_active, date_joined                        | For authentication and role management: Lead designers have full access; junior designers have restricted access to measurements and images only |
 
 
 ---
