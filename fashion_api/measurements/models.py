@@ -7,7 +7,7 @@ from users.models import User
 class Measurement(models.Model):
     measurement_id = models.AutoField(primary_key=True)
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='measurements')
+    order = models.OneToOneField(Order, on_delete=models.CASCADE, related_name='measurement')
     values = models.JSONField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
