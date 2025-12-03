@@ -12,6 +12,5 @@ class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
     permission_classes = [GeneralPermissions, CustomerPermissions]
-    lookup_field = 'customer_id'
     filter_backends = [filters.SearchFilter]
     search_fields = ['name']

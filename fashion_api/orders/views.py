@@ -7,7 +7,7 @@ from .permissions import OrderPermissions
 from users.permissions import GeneralPermissions
 
 # Create your views here.
-class CustomerViewSet(viewsets.ModelViewSet):
+class OrderViewSet(viewsets.ModelViewSet):
 
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer

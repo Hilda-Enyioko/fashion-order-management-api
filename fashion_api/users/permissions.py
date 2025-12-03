@@ -9,7 +9,7 @@ class GeneralPermissions(permissions.BasePermission):
     Others => Read
     """
 
-    def has_object_permission(self, request, view, obj):
+    def has_permission(self, request, view, obj):
         # Allow read-only for everyone
         if request.method in permissions.SAFE_METHODS:
             return True
@@ -27,3 +27,11 @@ class GeneralPermissions(permissions.BasePermission):
             return request.user.role in ['admin', 'junior_admin']
         
         return False
+    
+class UserPermissions(permissions.BasePermission):
+    def has_permission(self, request, view):
+        # Read-only permission for SAFE_METHODS
+        if request.method in permissions.SAFE_METHODS:
+            return True
+        
+        return request.user.role == 'admin'
