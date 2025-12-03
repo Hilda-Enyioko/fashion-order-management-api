@@ -18,6 +18,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
     permission_classes = [IsAdminOrReadOnly]
+    lookup_field = 'customer_id'
 
     def create(self, request, *args, **kwargs):
         # Block direct customer creation
