@@ -6,6 +6,7 @@ from .models import Customer
 from users.models import User
 from .serializers import CustomerSerializer
 from .permissions import IsAdminOrReadOnly
+from users.permissions import GeneralPermissions
 
 # Create your views here.
 class CustomerViewSet(viewsets.ModelViewSet):
@@ -17,7 +18,7 @@ class CustomerViewSet(viewsets.ModelViewSet):
     """
     queryset = Customer.objects.all()
     serializer_class = CustomerSerializer
-    permission_classes = [IsAdminOrReadOnly]
+    permission_classes = [GeneralPermissions, IsAdminOrReadOnly]
     lookup_field = 'customer_id'
 
     def create(self, request, *args, **kwargs):
