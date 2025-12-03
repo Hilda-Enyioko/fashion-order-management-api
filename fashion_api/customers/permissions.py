@@ -1,18 +1,12 @@
 from rest_framework import viewsets, permissions
 
-class IsAdminOrReadOnly(permissions.BasePermission):
-    """
-    Custom permission:
-    - Admin can delete or update
-    - Junior admin can update only
-    - Everyone else can read
-    """
+class CustomerPermissions(permissions.BasePermission):
 
     def has_permission(self, request, view):
 
-        # NO direct POST for customers
-        if request.method == 'POST':
-            return False
+        # Allow create and delete actions for admin only
+        if request.method in ['POST', 'DELETE']:
+            return request.user.role == 'admin'
 
         # Allow PUT/PATCH for admin and junior-admin
         if request.method in ['PUT', 'PATCH']:
