@@ -1,14 +1,14 @@
 from django.shortcuts import render
 from rest_framework import viewsets
 
-from .models import Customer
-from .serializers import CustomerSerializer
+from .models import Order
+from .serializers import OrderSerializer
 from .permissions import OrderPermissions
 from users.permissions import GeneralPermissions
 
 # Create your views here.
 class OrderViewSet(viewsets.ModelViewSet):
 
-    queryset = Customer.objects.all()
-    serializer_class = CustomerSerializer
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer
     permission_classes = [GeneralPermissions, OrderPermissions]

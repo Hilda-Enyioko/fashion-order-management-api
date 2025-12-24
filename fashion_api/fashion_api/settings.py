@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     # Your apps
     'customers',
     'orders',
-    'measurements',
+    'size',
     'images',
     'users',
 ]
