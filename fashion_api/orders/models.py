@@ -1,6 +1,7 @@
 from django.db import models
 from customers.models import Customer
 from  users.models import User
+from size.models import Size
 
 # Create your models here.
 class Order(models.Model):
@@ -20,6 +21,9 @@ class Order(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='created_orders')
     updated_at = models.DateTimeField(auto_now=True)
     updated_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='updated_orders')
+    
+    # Add size field
+    size = models.ForeignKey(Size, on_delete=models.PROTECT)
     
     def __str__(self):
         return f"Order {self.order_id} - {self.order_status}"
