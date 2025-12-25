@@ -20,11 +20,13 @@ from rest_framework import routers
 from customers.views import CustomerViewSet
 from orders.views import OrderViewSet
 from size.views import SizeViewSet
+from inventory.views import InventoryItemViewSet
 
 router = routers.DefaultRouter()
 router.register(r'customers', CustomerViewSet)
 router.register(r'orders', OrderViewSet)
 router.register(r'size', SizeViewSet)
+router.register(r'inventory', InventoryItemViewSet, basename='inventory')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

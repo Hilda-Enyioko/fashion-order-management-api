@@ -1,11 +1,11 @@
 from django.db import models
 from users.models import User
-from orders.models import Order
+from inventory.models import InventoryItem
 
 # Create your models here.
 class Image(models.Model):
     image_id = models.AutoField(primary_key=True)
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='images')
+    inventory_item = models.ForeignKey(InventoryItem, on_delete=models.CASCADE, related_name='images')
     image_file = models.ImageField(upload_to='order_images/')
     description = models.TextField(blank=True, null=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)

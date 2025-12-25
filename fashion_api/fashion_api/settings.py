@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'size',
     'images',
     'users',
+    'inventory',
 ]
 
 MIDDLEWARE = [
