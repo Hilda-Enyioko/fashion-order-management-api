@@ -1,26 +1,41 @@
-# inventory/views.py
 from rest_framework import viewsets, filters
 from django_filters.rest_framework import DjangoFilterBackend
-from .models import InventoryItem
-from .serializers import InventoryItemSerializer
-from users.permissions import GeneralPermissions
+from .models import InventoryItem, InventoryChange
+from .serializers import InventoryItemSerializer, InventoryChangeSerializer
+from users.permissions import GeneralPermissions, ReadOnlyPermissions
 
 class InventoryItemViewSet(viewsets.ModelViewSet):
-    """
-    Inventory view:
-    - Readable by anyone
-    - Editable only by staff/admin
-    """
     queryset = InventoryItem.objects.all()
     serializer_class = InventoryItemSerializer
     permission_classes = [GeneralPermissions]
 
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter, filters.SearchFilter]
     filterset_fields = {
-        'category': ['exact'],
-        'price': ['gte', 'lte'],
-        'quantity': ['lte'],  # low stock
+        "category": ["exact"],
+        "price": ["gte", "lte"],
+        "quantity": ["lte"],
     }
-    ordering_fields = ['name', 'quantity', 'price', 'created_at']
-    ordering = ['name']
-    search_fields = ['name', 'description']
+    ordering_fields = ["name", "quantity", "price", "created_at"]
+    ordering = ["name"]
+    search_fields = ["name", "description"]
+
+    def perform_create(self, serializer):
+        instance = serializer.save(created_by=self.request.user)
+        instance._changed_by = self.request.user
+        instance._change_type = "created"
+        instance.save(update_fields=["quantity"])
+
+    def perform_update(self, serializer):
+        instance = serializer.save()
+        instance._changed_by = self.request.user
+        instance._change_type = "manual"
+        instance.save(update_fields=["quantity"])
+
+
+class InventoryChangeViewSet(viewsets.ReadOnlyModelViewSet):
+    from .models import InventoryChange
+    from .serializers import InventoryChangeSerializer
+
+    queryset = InventoryChange.objects.all().order_by('-timestamp')
+    serializer_class = InventoryChangeSerializer
+    permission_classes = [ReadOnlyPermissions]

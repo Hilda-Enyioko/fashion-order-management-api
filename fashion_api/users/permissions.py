@@ -28,6 +28,11 @@ class GeneralPermissions(permissions.BasePermission):
         
         return False
     
+
+class ReadOnlyPermissions(permissions.BasePermission):
+    def has_permission(self, request, view):
+        return request.method in permissions.SAFE_METHODS
+    
 class UserPermissions(permissions.BasePermission):
     def has_permission(self, request, view):
         # Read-only permission for SAFE_METHODS

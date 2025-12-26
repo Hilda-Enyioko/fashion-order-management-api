@@ -21,15 +21,24 @@ class OrderItemSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         item = validated_data['inventory_item']
-        item.quantity -= validated_data['quantity']
-        item.save(update_fields=['quantity'])
-        return OrderItem.objects.create(**validated_data)
+        qty = validated_data['quantity']
 
+        item.quantity -= qty
+        item._changed_by = self.context['request'].user
+        item._change_type = "sold"
+        item.save(update_fields=['quantity'])
+
+        return OrderItem.objects.create(**validated_data)
+    
     def update(self, instance, validated_data):
         item = instance.inventory_item
         old_qty = instance.quantity
         new_qty = validated_data.get('quantity', old_qty)
         diff = new_qty - old_qty
+        
+        item._changed_by = self.context['request'].user
+        item._change_type = "sold"
+
 
         if diff > 0:
             if item.quantity < diff:
