@@ -24,7 +24,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
         qty = validated_data['quantity']
 
         item.quantity -= qty
-        item._changed_by = self.context['request'].user
+        item._updated_by = self.context['request'].user
         item._change_type = "sold"
         item.save(update_fields=['quantity'])
 
@@ -36,7 +36,7 @@ class OrderItemSerializer(serializers.ModelSerializer):
         new_qty = validated_data.get('quantity', old_qty)
         diff = new_qty - old_qty
         
-        item._changed_by = self.context['request'].user
+        item._updated_by = self.context['request'].user
         item._change_type = "sold"
 
 

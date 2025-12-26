@@ -21,13 +21,13 @@ class InventoryItemViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         instance = serializer.save(created_by=self.request.user)
-        instance._changed_by = self.request.user
+        instance._updated_by = self.request.user
         instance._change_type = "created"
         instance.save(update_fields=["quantity"])
 
     def perform_update(self, serializer):
         instance = serializer.save()
-        instance._changed_by = self.request.user
+        instance._updated_by = self.request.user
         instance._change_type = "manual"
         instance.save(update_fields=["quantity"])
 
