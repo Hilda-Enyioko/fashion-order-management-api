@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from rest_framework_simplejwt.settings import api_settings
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -165,3 +166,6 @@ SIMPLE_JWT = {
 
 # Custom user model
 AUTH_USER_MODEL = 'users.User'
+
+# Use your custom primary key field
+api_settings.USER_ID_FIELD = 'user_id'
