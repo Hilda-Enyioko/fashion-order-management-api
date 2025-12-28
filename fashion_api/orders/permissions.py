@@ -5,6 +5,6 @@ class OrderPermissions(permissions.BasePermission):
         
         # Allow POST, PUT, PATCH, DELETE actions for admin only
         if request.method in ['POST', 'PUT', 'PATCH', 'DELETE']:
-            return request.user.role == 'admin'
+            return getattr(request.user, 'role', '') in ['admin']
         
         return False

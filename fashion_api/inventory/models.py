@@ -10,6 +10,11 @@ class InventoryItem(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name="inventory_items")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(fields=['name', 'category'], name='unique_inventory_item')
+        ]
 
     def __str__(self):
         return self.name

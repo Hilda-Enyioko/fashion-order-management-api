@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
-from rest_framework_simplejwt.settings import api_settings
+import os
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,9 +25,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-1y6psr#2^(^5e3eeh^ns80&wqol&abjskpprbv)eqc7qb(qhxm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost')]
 
 
 # Application definition
@@ -86,12 +87,9 @@ WSGI_APPLICATION = 'fashion_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
-}
+DATABASES = dj_database_url.config(
+    default=os.environ.get('DATABASE_URL')
+)
 
 
 # Password validation
@@ -128,7 +126,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Media files
 MEDIA_URL = '/media/'
@@ -149,9 +149,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
     ),
-    'DEFAULT_PAGINATION_CLASS': (
-        'rest_framework.pagination.PageNumberPagination',
-    ),
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+        
     'PAGE_SIZE': 10,
 }
 
@@ -162,10 +161,10 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'user_id',
+    'USER_ID_CLAIM': 'user_id',
 }
+
 
 # Custom user model
 AUTH_USER_MODEL = 'users.User'
-
-# Use your custom primary key field
-api_settings.USER_ID_FIELD = 'user_id'

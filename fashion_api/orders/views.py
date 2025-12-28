@@ -11,7 +11,7 @@ class OrderViewSet(viewsets.ModelViewSet):
 
     queryset = Order.objects.all()
     serializer_class = OrderSerializer
-    permission_classes = [GeneralPermissions, OrderPermissions]
+    permission_classes = [GeneralPermissions]
     
     def perform_update(self, serializer):
         serializer.save(updated_by=self.request.user)
