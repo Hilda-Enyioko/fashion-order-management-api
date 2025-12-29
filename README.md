@@ -78,6 +78,8 @@ In alignment with the ALX inventory management problem statement, this project a
 ---
 | Model       | Fields                                                                                       | Description                                                                                                   |
 |-------------|----------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
+| InventoryItem | inventory_item_id, name, description, quantity, price, category, created_at, updated_at, created_by, updated_by | Stores available inventory items and stock levels |
+| InventoryChange | change_id, inventory_item, old_quantity, new_quantity, changed_at, changed_by | Logs every inventory quantity update |
 | Customer    | customer_id, name, email, phone, created_at                                                   | Stores customer information                                                                                   |
 | Order       | order_id, customer, order_status, price, payment_status, delivery_date, created_at, updated_at, created_by, updated_by      | Stores each order                                                                                             |
 | Measurement | measurement_id, customer, order, type, values, created_at, updated_at                                                | Stores measurements for an order                                                                              |
