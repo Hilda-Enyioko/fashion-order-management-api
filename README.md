@@ -7,7 +7,16 @@
 **Project Name:** Fashion Designer Order & Client Management API
 **Category:** Inventory Management (Back-End)
 **Description:**
-This API allows fashion designers to manage customer orders efficiently. It provides endpoints for managing customers, recording and updating measurements, uploading images of customer styles, tracking order timelines, updating delivery status, price, and payment status.
+This API is designed to help fashion designers and tailoring businesses efficiently manage their operations through a centralized system. It provides structured endpoints for managing inventory items, customers, orders, and order items, ensuring accurate tracking of stock levels and customer requests.
+
+The system enables designers to:
+- Maintain a well-organized inventory of fashion items and materials
+- Create and manage customer orders seamlessly
+- Track order progress, delivery status, and timelines
+-Associate orders with specific inventory items and quantities
+- Improve operational efficiency and reduce errors caused by manual record-keeping
+
+By exposing a clean and scalable API, the platform supports integration with web or mobile applications used in day-to-day fashion business operations.
 
 **Target Users:** Fashion designers, boutique managers, tailors handling multiple clients and custom orders.
 
