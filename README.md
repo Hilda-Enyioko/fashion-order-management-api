@@ -52,7 +52,7 @@ In alignment with the ALX inventory management problem statement, this project a
 ---
 | Feature               | Description                                                       |
 |-----------------------|-------------------------------------------------------------------|
-|   |   |
+| Inventory Management | Add, update, delete, and view inventory items, including quantity and availability |
 | Customer Management   | Add, update, delete, and view customers                           |
 | Order Management      | Create, update, delete, and track orders                          |
 | Measurements Management | Record and update customer measurements                         |
