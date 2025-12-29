@@ -99,6 +99,8 @@ In alignment with the ALX inventory management problem statement, this project a
 | /customers/{id}/        | GET, PUT, DELETE    | Retrieve, update, or delete a customer                        |
 | /orders/                | GET, POST           | List or create orders                                         |
 | /orders/{id}/           | GET, PUT, DELETE    | Retrieve, update, or delete an order                          |
+| /order-items/ | GET, POST | Create or view order items |
+| /order-items/{id}/ | GET, PUT, DELETE | Manage individual order items |
 | /measurements/          | GET, POST           | Add or view measurements                                      |
 | /measurements/{id}/     | GET, PUT, DELETE    | Update or delete a measurement                                |
 | /style-images/          | GET, POST           | Upload or view style images                                   |
