@@ -38,18 +38,21 @@ In alignment with the ALX inventory management problem statement, this project a
 ---
 ## 3. Objectives
 ---
-- CRUD operations for customers and orders
-- Ability to upload and store customer style images
-- Manage measurements and order details
-- Track order timeline and delivery status
-- Record pricing and payment status
-- Implement authentication and permissions
+- Implement full CRUD operations for inventory items
+- Enable inventory tracking and association with customer orders
+- Provide CRUD operations for customers and orders
+- Manage customer measurements and order-specific details
+- Upload and store customer style reference images
+- Track order timelines, delivery dates, and order status
+- Record pricing and payment status for orders
+- Implement authentication, authorization, and role-based access control
 
 ---
 ## 4. Features
 ---
 | Feature               | Description                                                       |
 |-----------------------|-------------------------------------------------------------------|
+|   |   |
 | Customer Management   | Add, update, delete, and view customers                           |
 | Order Management      | Create, update, delete, and track orders                          |
 | Measurements Management | Record and update customer measurements                         |
