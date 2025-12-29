@@ -34,6 +34,7 @@ Managing inventory and orders manually within fashion businesses often leads to 
 - Inefficient order processing and fulfillment workflows
 
 In alignment with the ALX inventory management problem statement, this project addresses these challenges by providing a structured API that enables accurate inventory tracking, controlled order creation, and consistent data management. The goal is to improve reliability, scalability, and transparency in fashion order and inventory management systems.
+
 ---
 ## 3. Objectives
 ---
