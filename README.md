@@ -93,6 +93,8 @@ In alignment with the ALX inventory management problem statement, this project a
 ---
 | Endpoint                | Method              | Description                                                   |
 |-------------------------|---------------------|---------------------------------------------------------------|
+| /inventory/ | GET, POST | List or create inventory items |
+| /inventory/{id}/ | GET, PUT, PATCH, DELETE | Retrieve, update, or delete an inventory item |
 | /customers/             | GET, POST           | List or create customers                                      |
 | /customers/{id}/        | GET, PUT, DELETE    | Retrieve, update, or delete a customer                        |
 | /orders/                | GET, POST           | List or create orders                                         |
