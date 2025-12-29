@@ -5,7 +5,9 @@
 ## 1. Project Overview
 ---
 **Project Name:** Fashion Designer Order & Client Management API
+
 **Category:** Inventory Management (Back-End)
+
 **Description:**
 This API is designed to help fashion designers and tailoring businesses efficiently manage their operations through a centralized system. It provides structured endpoints for managing inventory items, customers, orders, and order items, ensuring accurate tracking of stock levels and customer requests.
 
@@ -23,14 +25,15 @@ By exposing a clean and scalable API, the platform supports integration with web
 ---
 ## 2. Problem Statement
 ---
-Managing custom fashion orders manually is time-consuming and error-prone.
-Designers often struggle to:
-- Track customer measurements and preferences
-- Manage multiple orders with deadlines
-- Keep a record of payments and order statuses
-- Organize style references (images)
-This project aims to streamline these processes through a structured API.
+Managing inventory and orders manually within fashion businesses often leads to inefficiencies, inconsistencies, and loss of critical data. Designers and small fashion houses struggle with keeping accurate records of available items, tracking order fulfillment, and maintaining up-to-date stock levels as orders are created, updated, or canceled.
 
+**Common challenges include:**
+- Lack of real-time visibility into inventory availability
+- Difficulty tracking inventory usage across multiple orders
+- Errors caused by duplicate records or outdated stock information
+- Inefficient order processing and fulfillment workflows
+
+In alignment with the ALX inventory management problem statement, this project addresses these challenges by providing a structured API that enables accurate inventory tracking, controlled order creation, and consistent data management. The goal is to improve reliability, scalability, and transparency in fashion order and inventory management systems.
 ---
 ## 3. Objectives
 ---
