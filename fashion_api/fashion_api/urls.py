@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework import routers
 from customers.views import CustomerViewSet
-from orders.views import OrderViewSet
+from orders.views import OrderViewSet, OrderItemViewSet
 from size.views import SizeViewSet
 from inventory.views import InventoryItemViewSet, InventoryChangeViewSet
 from rest_framework_simplejwt.views import (
@@ -34,6 +34,7 @@ from drf_spectacular.views import (
 router = routers.DefaultRouter()
 router.register(r'customers', CustomerViewSet)
 router.register(r'orders', OrderViewSet)
+router.register(r'order_items', OrderItemViewSet)
 router.register(r'size', SizeViewSet)
 router.register(r'inventory', InventoryItemViewSet, basename='inventory')
 router.register(r'inventory-changes', InventoryChangeViewSet, basename='inventory-changes')

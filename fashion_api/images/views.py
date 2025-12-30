@@ -1,11 +1,14 @@
 from django.shortcuts import render
 from rest_framework import viewsets
+from drf_spectacular.utils import extend_schema
 from rest_framework.exceptions import ValidationError
 from .models import Image
 from .serializers import ImageSerializer
 from users.permissions import GeneralPermissions
 
 # Create your views here.
+
+@extend_schema(tags=['Image'])
 class ImageViewSet(viewsets.ModelViewSet):
     queryset = Image.objects.all()
     serializer_class = ImageSerializer
@@ -13,9 +16,9 @@ class ImageViewSet(viewsets.ModelViewSet):
     
     def perform_create(self, serializer):
         # Prevent create action if image is not associated with an order
-        order = serializer.validated_data.get('order')
+        inventory_item = serializer.validated_data.get('inventory_item')
         
-        if not order:
+        if not inventory_item:
             raise ValidationError("An Image must be associated with an order.")
         
         # Prevent create action if image size exceeds 5MB

@@ -3,7 +3,10 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .models import InventoryItem, InventoryChange
 from .serializers import InventoryItemSerializer, InventoryChangeSerializer
 from users.permissions import GeneralPermissions, ReadOnlyPermissions
+from drf_spectacular.utils import extend_schema
 
+
+@extend_schema(tags=['InventoryItem'])
 class InventoryItemViewSet(viewsets.ModelViewSet):
     queryset = InventoryItem.objects.all()
     serializer_class = InventoryItemSerializer
@@ -32,6 +35,8 @@ class InventoryItemViewSet(viewsets.ModelViewSet):
         instance.save(update_fields=["quantity"])
 
 
+
+@extend_schema(tags=['InventoryChange'])
 class InventoryChangeViewSet(viewsets.ReadOnlyModelViewSet):
     from .models import InventoryChange
     from .serializers import InventoryChangeSerializer
