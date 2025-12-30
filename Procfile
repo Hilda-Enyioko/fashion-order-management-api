@@ -1,1 +1,1 @@
-web: gunicorn fashion_api.wsgi --log-file -
+web: gunicorn fashion_api.fashion_api.wsgi --log-file -
