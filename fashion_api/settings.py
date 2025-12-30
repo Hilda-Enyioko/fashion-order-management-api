@@ -47,12 +47,12 @@ INSTALLED_APPS = [
     'drf_spectacular',
 
     # Your apps
-    'customers',
-    'orders',
-    'size',
-    'images',
-    'users',
-    'inventory',
+    'fashion_api.customers',
+    'fashion_api.orders',
+    'fashion_api.size',
+    'fashion_api.images',
+    'fashion_api.users',
+    'fashion_api.inventory',
 ]
 
 MIDDLEWARE = [
