@@ -2,7 +2,7 @@ import os
 import django
 
 # Set Django settings
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", ".settings")
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fashion_api.settings")
 django.setup()
 
 from django.contrib.auth import get_user_model
