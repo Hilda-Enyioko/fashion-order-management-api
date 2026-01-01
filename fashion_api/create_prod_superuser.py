@@ -1,26 +1,23 @@
-from django.core.management.base import BaseCommand
-from django.contrib.auth import get_user_model
 import os
+import django
+
+# Set Django settings
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "fashion_api.settings")
+django.setup()
+
+from django.contrib.auth import get_user_model
 
 User = get_user_model()
 
-class Command(BaseCommand):
-    help = "Create production superuser if not exists"
+USERNAME = os.environ.get("DJANGO_SUPERUSER_USERNAME", "admin")
+EMAIL = os.environ.get("DJANGO_SUPERUSER_EMAIL", "admin@example.com")
+PASSWORD = os.environ.get("DJANGO_SUPERUSER_PASSWORD")
 
-    def handle(self, *args, **kwargs):
-        email = os.environ.get("DJANGO_SUPERUSER_EMAIL")
-        password = os.environ.get("DJANGO_SUPERUSER_PASSWORD")
+if not PASSWORD:
+    raise ValueError("No superuser password set in DJANGO_SUPERUSER_PASSWORD!")
 
-        if not email or not password:
-            self.stdout.write("DJANGO_SUPERUSER_EMAIL or DJANGO_SUPERUSER_PASSWORD not set")
-            return
-
-        if User.objects.filter(email=email).exists():
-            self.stdout.write("Superuser already exists")
-            return
-
-        User.objects.create_superuser(
-            email=email,
-            password=password
-        )
-        self.stdout.write("Superuser created successfully")
+if not User.objects.filter(username=USERNAME).exists():
+    User.objects.create_superuser(USERNAME, EMAIL, PASSWORD)
+    print("Superuser created!")
+else:
+    print("Superuser already exists.")
