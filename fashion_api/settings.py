@@ -89,6 +89,7 @@ WSGI_APPLICATION = 'fashion_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# add production and testing database configurations
 DATABASES = {
     'default': dj_database_url.config(
         default=os.environ.get("DATABASE_URL"),
@@ -195,3 +196,7 @@ SPECTACULAR_SETTINGS = {
         }
     },
 }
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://fashion-order-management-api-production.up.railway.app",
+]
