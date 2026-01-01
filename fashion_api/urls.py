@@ -40,6 +40,7 @@ router.register(r'inventory', InventoryItemViewSet, basename='inventory')
 router.register(r'inventory-changes', InventoryChangeViewSet, basename='inventory-changes')
 
 urlpatterns = [
+    path('', lambda request: HttpResponse("Fashion API is live!")),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
